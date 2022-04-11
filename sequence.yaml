@@ -1,0 +1,46 @@
+---
+cluster1: 
+    name: primary
+    client: admin
+cluster2:
+    name: secondary
+    client: admin
+tests:
+  - pool_mode: image
+    mirroring_type: snapshot
+    ec_pool: False
+    images: 10
+    size: 10G
+    schedule: image
+    s_interval: 1m
+
+  - pool_mode: image
+    mirroring_type: snapshot
+    ec_pool: True
+    images: 10
+    size: 10G
+    s_interval: 1m
+
+  - pool_mode: image
+    mirroring_type: journal
+    ec_pool: False
+    images: 10
+    size: 10G
+
+  - pool_mode: image
+    mirroring_type: journal
+    ec_pool: True
+    images: 10
+    size: 10G
+
+  - pool_mode: pool
+    mirroring_type: journal
+    ec_pool: False
+    images: 10
+    size: 10G
+
+  - pool_mode: pool
+    mirroring_type: journal
+    ec_pool: True
+    images: 10
+    size: 10G
